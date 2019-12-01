@@ -1,0 +1,72 @@
+<div class="container">
+  <br>
+  <h4><mark>Пользователи:</mark>{{name}}
+  <small>{{model}}</small></h4>
+  <div class="alert alert-success"></div>
+  Свойства пользователя:
+  <ul>
+    <li>Сорость: <strong>{{speed}}</strong> км</li>
+    <li>Цвет авто: <strong>{{colors.car}}</strong></li>
+    <li>Цвет салона: <strong>{{colors.salon}}</strong> км</li>
+    <li>Цвет колес: <strong>{{colors.wheels}}</strong> км</li>
+  </ul>
+</div>
+
+
+<h5>Редактировать</h5>
+<button class="but btn-danger"(click)="showEdit()">Редактировать</button>
+<div><br></div>
+<form *ngIf=isEdit>
+<div class="form-group">
+
+<input type="text" placeholder="Название"
+class="form-control" [(ngModel)]="name" name="name">
+<br>
+<input type="text" placeholder="Модель"
+class="form-control" [(ngModel)]="model" name="model">
+<br>
+<input type="text" placeholder="Скорость"
+class="form-control" [(ngModel)]="speed" name="speed">
+<br>
+<input type="text" placeholder="Цвет ашины"
+class="form-control" [(ngModel)]="colors.car" name="car">
+<br>
+<input type="text" placeholder="Цвет салона"
+class="form-control" [(ngModel)]="colors.salon" name="salon">
+<br>
+<input type="text" placeholder="Цвет колес"
+class="form-control" [(ngModel)]="colors.wheels" name="whlees ">
+<br>
+</div>
+</form>
+
+<h5>Регистрация</h5>
+<form (submit)="addOpt(option.value,option1.value,option2.value)">
+<div class="form-group">
+<label for="option">Регистрационнае данные:</label>
+<input type="text" id="option" placeholder="Введите Наименование"
+class="form-control" #option>
+<br>
+<input type="text" id="option" placeholder="Введите Регистрационный номер"
+class="form-control" #option1>
+<br>
+<input type="text" id="option" placeholder="Введите дату регистрации"
+class="form-control" #option2>
+<br>
+<button type="submit" class="but btn-outline-success">Отправить</button>
+</div>
+</form>
+
+<div class="alert alert-warning">
+  <ul>
+    <li *ngFor="let opt of options; let i=index">{{i+1}} - {{opt}}
+      <button class="btn btn-danger btn-sm"(click)="deleteOpt(opt)">удалить</button>
+    </li>
+  </ul>
+</div>
+
+<h5>Вырать пользователя</h5>
+
+<button class="btn btn-danger"(click)="userSelect('bmw')">BMW</button>
+<button class="btn btn-success"(click)="userSelect('audi')">Audi</button>
+<button class="btn btn-info"(click)="userSelect('mer')">Mers</button>
